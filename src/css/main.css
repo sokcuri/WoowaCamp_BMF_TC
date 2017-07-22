@@ -1,12 +1,47 @@
 html, body {
     margin: 0;
     padding: 0;
+    outline: 0;
+    font-weight: normal;
+    vertical-align: baseline;
     height: 100%;
 }
-.noscroll {
-    position: fixed; 
-    overflow-y: scroll;
-    width: 100%;
+body {
+    font-family: 'Nanum', 'Apple Gothic', 'Malgun Gothic', 'Nanum Gothic', 'Dotum', Arial, sans-serif;
+    font-size: 13px;
+    background: #fff;
+    color: #333;
+}
+ul {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+}
+i, em, address {
+    font-style: normal;
+    font-weight: normal;
+}
+a {
+    text-decoration: none;
+    color: #333;
+}
+a:hover {
+    cursor: pointer;
+}
+*[downarrow] > a:after {
+    content: '';
+    display: inline-block;
+    zoom: 1;
+    width: 7px;
+    height: 11px;
+    background: url(https://cdn.bmf.kr/web/common/bul_arr_down.png) no-repeat center 1px;
+    margin-left: 4px;
+}
+* > a:hover:after {
+    background-position: center -13px;
+}
+ol, ul, dl {
+    list-style: none;
 }
 bmf-modal:before {
     width: 100%;
@@ -43,13 +78,72 @@ bmf-modal-inner > * {
     display: inline-block;
     vertical-align: middle;
 }
-.centered {
-    width: 300px;
+.prod_detail {
+    width: 1250px;
     background: white;
+    border: 6px solid #2ac1bc;
+    border-top: 0;
+}
+.prod_detail-close {
+    position: absolute;
+    margin-left: 1230px;
+    margin-top: -15px;
+    width: 30px;
+    height: 30px;
+    background: white;
+    border-radius: 100px;
+    position: absolute;
+    border: 3px solid #2ac1bc;
+    box-shadow: 0 0 2px 2px rgba(255, 255, 255, 0.5);
+}
+.prod_detail-close-btn {
+    display: block;
+    width: 24px;
+    height: 24px;
+    left: 3px;
+    position: relative;
+}
+.prod_detail-close-btn:before, .prod_detail-close-btn:after{
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 2px;
+    background-color: #2ac1bc;
+    border-radius: 2px;
+    top: 14px;
+}
+.prod_detail-close-btn:before{
+    -webkit-transform:rotate(45deg);
+    -moz-transform:rotate(45deg);
+    transform:rotate(45deg);
+    left:2px;
+}
+.prod_detail-close-btn:after{
+    -webkit-transform:rotate(-45deg);
+    -moz-transform:rotate(-45deg);
+    transform:rotate(-45deg);
+    right:2px;
+}
+
+.prod_detail-title {
+    background: #2ac1bc;
+    text-align: left;
+    padding: 12px;
+    font-weight: bold;
+    color: white;
+    font-size: 1.1rem;
+}
+.prod_detail-content {
+    overflow: auto;
+    width: 100%;
+    max-height: 600px;
+}
+.prod_detail-context:hover {
+    outline: 0;
 }
 
 bmf-modal[opened]~bmf-content {
-    filter: blur(25px);
+    filter: blur(6px);
 }
 bmf-content {
     position: absolute;
@@ -60,18 +154,65 @@ bmf-content-inner {
     display: block;
     width: 100%;
     height: 100%;
-} 
+    overflow: auto;
+}
+bmf-content-inner:focus {
+    outline: 0;
+}
+
 sitebar {
     display: block;
     position: relative;
     border-bottom: 1px solid #e9e9e9;
+}
+sitebar a {
+    display: block;
+    font-size: 12px;
+    height: 17px;
+    padding: 10px 11px 9px;
+    text-align: center;
+}
+sitebar a:hover {
+    color: #2ac1bc;
 }
 .sitebar-section {
     position: relative;
     width: 980px;
     height: 36px;
     margin: 0 auto;
-    background-image: url('http://placehold.it/980x36/e9e9e9/000000?text=Sitebar Area (980x36)');
+    height: 36px;
+    overflow: visible;
+    letter-spacing: -0.2px;
+    font-family: "Nanum";
+}
+.link_app {
+    float: left;
+}
+
+ul.link_lst {
+    position: relative;
+    float: right;
+}
+
+ul.link_lst > li {
+    float: left;
+    display: block;
+    position: relative;
+}
+ul.link_lst > li:not(:first-child):before{
+    content: '';
+    display: inline-block;
+    width: 1px;
+    height: 11px;
+    background: #ddd;
+    transform: translate3d(1px, 2px, 0);
+}
+ul.link_lst > li > a {
+    display: inline-block;
+    font-size: 12px;
+    height: 17px;
+    padding: 10px 10px 9px 10px;
+    text-align: center;
 }
 .header-section {
     position: relative;
@@ -79,7 +220,48 @@ sitebar {
     height: 98px;
     margin: 0 auto;
     overflow: hidden;
-    background: url('http://placehold.it/980x98/dddddd/2AC1BC?text=Header Area (980x98)');
+}
+
+.bmf-logo {
+    float: left;
+    margin: 16px 0 0;
+}
+.searchbar {
+    position: relative;
+    float: left;
+    margin-top: 30px;
+    margin-left: 25px;
+}
+.searchbar input {
+    border: 1px solid #cfd0d2;
+    width: 178px;
+    height: 38px;
+    line-height: 38px;
+    padding: 0 15px;
+    color: #888;
+    font-family: Verdana, 나눔고딕, "Nanum", "Malgun Gothic", sans-serif;
+}
+.searchbar button {
+    background: url(https://cdn.bmf.kr/web/common/ic_search.png) no-repeat center 0;
+    width: 38px;
+    height: 38px;
+    text-indent: -3000px;
+    position: absolute;
+    top: 2px;
+    right: 0;
+    border: 0;
+}
+ul.gnb_top {
+    float: right;
+    overflow: hidden;
+}
+ul.gnb_top > li {
+    float: left;
+}
+ul.gnb_top > li > a {
+    display: block;
+    height: 48px;
+    margin: 25px 0 25px 50px;
 }
 
 nav {
@@ -90,9 +272,146 @@ nav {
     width: 980px;
     height: 52px;
     margin: 0 auto;
-    background-image: url('http://placehold.it/980x52/483f35/ffffff?text=Navigator Area(980x52)');
+}
+ul.gnb > li {
+	float: left;
+	position: relative;
+	text-align: left;
+}
+ul.gnb > li > a {
+	display: block;
+	padding: 5px 0 0 1px;
+}
+ul.gnb > li > a > span {
+	display: inline-block;
+	*display: block;
+	*zoom: 1;
+	color: #fff;
+	font-size: 16px;
+	font-family: "NanumBold", 맑은고딕, "Malgun Gothic", sans-serif;
+	height: 36px;
+	padding: 11px 25px 0;
+	text-align: center;
+	letter-spacing: 0;
+	cursor: pointer;
+}
+ul.gnb > li.now > a > span {
+	color: #25d4ce;
+	font-family: 'NanumEB', sans-serif;
+}
+ul.gnb > li:hover > a > span,
+ul.gnb > li:focus > a > span {
+	background: #fff;
+	color: #2ac1bc;
+}
+ul.gnb > li.g1 {
+	width: 100px;
+}
+ul.gnb > li.g2 {
+	width: 124px;
+}
+ul.gnb > li.g3 {
+	width: 124px;
+}
+ul.gnb > li.g4 {
+	width: 124px;
+}
+ul.gnb > li.g5 {
+	width: 124px;
+}
+ul.gnb > li.g6 {
+	width: 124px;
+}
+ul.gnb > li.g7 {
+	width: 120px;
+}
+ul.gnb > li.g8 {
+	width: 140px;
+	background: #362d25;
+	text-align: center;
+}
+ul.gnb > li:hover > ul {
+    display: block;
+}
+ul.sub_lst {
+	display: none;
+	/*min-height: 255px; */
+	width: 162px;
+	position: absolute;
+	left: 0;
+	top: 52px;
+	padding: 20px 0 31px;
+	font-family: "Nanum", sans-serif;
+	background: #fff;
+	border: 1px solid rgba(72, 63, 53, .6);
+	border-top: none;
+	z-index: 1000;
+	-moz-background-clip: border;
+	/* Firefox 3.6 */
+	-webkit-background-clip: border;
+	/* Safari 4? Chrome 6? */
+	background-clip: border-box;
+	/* Firefox 4, Safari 5, Opera 10, IE 9 */
+	-moz-background-clip: padding;
+	/* Firefox 3.6 */
+	-webkit-background-clip: padding;
+	/* Safari 4? Chrome 6? */
+	background-clip: padding-box;
+	/* Firefox 4, Safari 5, Opera 10, IE 9 */
+}
+.ua-ie-7 ul.sub_lst,
+.ua-ie-8 ul.sub_lst {
+	border: 1px solid #483f35;
+	border-top: none;
+}
+ul.sub_lst>li {
+	text-align: left;
+}
+ul.sub_lst>li.sub_tlt {
+	border-top: 1px solid #e8e8e8;
+	padding: 14px 0;
+}
+ul.sub_lst>li.sub_tlt h4 {
+	padding: 0 0 3px 25px;
+	line-height: 1.4em;
+	font-size: 14px;
+	color: #222;
+	letter-spacing: 0;
+	font-family: 'NanumEB', sans-serif;
+}
+ul.sub_lst>li.sub_tlt.first {
+	border-top: none;
+	padding-top: 7px;
+}
+ul.sub_lst>li.sub_tlt.last {
+    padding-bottom: 0px;
 }
 
+ul.sub_lst a {
+    display: block;
+    color: #555;
+    font-size: 14px;
+    line-height: 1.4em;
+    padding: 6px 0 3px 25px;
+    letter-spacing:0;
+}
+ul.sub_lst a:hover, ul.cate_sub a:focus {
+    color: #2ac1bc;
+    font-family: "NanumBold", sans-serif;
+}
+ul.sub_lst a:hover span, ul.cate_sub a:focus span {
+    padding-bottom:1px;
+    border-bottom:1px solid #2ac1bc;
+}
+
+ul.gnb > li.g8 ul.sub_lst {
+    position: absolute;
+    left: -24px;
+}
+ul.gnb > li.g8 ul.sub_lst a {
+    padding: 6px 20px 3px 0;
+    text-align:right;
+}
 main {
     position: relative;
     text-align: center;
@@ -110,7 +429,8 @@ main {
     width: 100%;
     height: 420px;
     margin: 0 auto;
-    background: url('http://placehold.it/1920x420/DEDAD7/000000?text=Slide banner section%20Area%20(1920x420)');
+    /*background: url('http://placehold.it/1920x420/DEDAD7/000000?text=Slide banner section%20Area%20(1920x420)');*/
+    background: url('https://cdn.bmf.kr/banner/main_banner/170718/1500350864138_c3a2aaae9eda.jpg');
     background-position: center;
 }
 
@@ -142,13 +462,91 @@ footer {
     width: 100%;
     height: 247px;
     border-top: 1px solid #e9e9e9;
+    
+    font-size: 12px;
+    color: #888;
+    letter-spacing: -0.01em;
 }
 
 .footer-section {
     width: 980px;
-    height: 247px;
     margin: 0 auto;
     overflow: hidden;
-    background: #e9e9e9;
-    background-image: url('http://placehold.it/980x247/dddddd/000000?text=Footer Area (980x247)');
+}
+
+ul.fnb {
+    overflow: hidden;
+    padding: 35px 0 22px;
+}
+ul.fnb li {
+    float: left;
+    margin-left: 9px;
+    letter-spacing: 0;
+}
+ul.fnb li:first-child {
+    margin-left: 0;
+}
+ul.fnb li:not(:last-child) {   
+    border-right: 1px solid #d1d1d1;
+}
+ul.fnb li a {
+    display: block;
+    padding-right: 10px;
+    font-family: "NanumBold", sans-serif;
+    font-size: 13px;
+    color: #666;
+    text-decoration: none;
+    line-height: 0.95;
+    letter-spacing: 0;
+}
+ul.fnb li[strong] > a {
+    color: #000;
+}
+
+ul.fnb_info_lst li {
+    display: inline-block;
+    zoom: 1;
+    margin: 0 3px 6px 0;
+    padding-right: 9px;
+    background: url(https://cdn.bmf.kr/web/common/footer_bar.gif) no-repeat right center;
+}
+ul.fnb_info_lst li.last {
+    border-right: none;
+    background: none;
+}
+ul.fnb_info_lst li a span {
+    color: #888;
+    border-bottom: 1px solid #aaa;
+}
+.copyright {
+    margin: 15px 0 20px;
+}
+.bottom_copy {
+    margin: 0 0 30px;
+    color: #999;
+    line-height: 1.6em;
+}
+.footer-snsbox {
+    float: right;
+    position: absolute;
+    top: 31px;
+    right: 50%;
+    margin-right: -490px;
+}
+.footer-snsbox a {
+    display: inline-block;
+    zoom: 1;
+    float: left;
+    width: 50px;
+    height: 50px;
+    margin: 0 0 0 10px;
+    font-size: 11px;
+    color: #fff;
+    text-indent: -3000px;
+}
+.footer-snsbox a.link_blog {
+    background: url(https://cdn.bmf.kr/web/common/sns_blog.png) no-repeat center center;
+}
+.footer-snsbox a.link_facebook {
+    background: url(https://cdn.bmf.kr/web/common/sns_facebook.png) no-repeat center center;
 }

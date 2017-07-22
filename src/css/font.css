@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+
+@font-face {
+    font-family:'Nanum';
+    font-weight:400;
+    src: url('https://cdn.bmf.kr/font/NanumGothic.eot');
+    src: url('https://cdn.bmf.kr/font/NanumGothic.eot?#iefix') format('embedded-opentype'),
+         url('https://cdn.bmf.kr/font/NanumGothic.woff') format('woff'),
+         url('https://cdn.bmf.kr/font/NanumGothic.ttf') format('truetype');
+}
+@font-face {
+    font-family:'NanumBold';
+    font-weight:600;
+    src: url('https://cdn.bmf.kr/font/NanumGothicBold.eot');
+    src: url('https://cdn.bmf.kr/font/NanumGothicBold.eot?#iefix') format('embedded-opentype'),
+         url('https://cdn.bmf.kr/font/NanumGothicBold.woff') format('woff'),
+         url('https://cdn.bmf.kr/font/NanumGothicBold.ttf') format('truetype');
+}
+@font-face {
+    font-family:'NanumEB';
+    font-weight:900;
+    src: url('https://cdn.bmf.kr/font/NanumGothicExtraBold.eot');
+    src: url('https://cdn.bmf.kr/font/NanumGothicExtraBold.eot?#iefix') format('embedded-opentype'),
+         url('https://cdn.bmf.kr/font/NanumGothicExtraBold.woff') format('woff'),
+         url('https://cdn.bmf.kr/font/NanumGothicExtraBold.ttf') format('truetype');
+}

@@ -2,26 +2,329 @@
 <html>
     <head>
         <title>배민프레시 - 모바일 넘버원 반찬가게</title>
+        <link rel="stylesheet" href="css/font.css"></link>
         <link rel="stylesheet" href="css/main.css"></link>
         <script src="script/main.js"></script>
     </head>
     <body>
-        <bmf-modal>
+        <bmf-modal opened>
             <bmf-modal-inner><!--
-                --><div class="centered">Yay, I'm centered ...!</div>
+                --><div class="prod_detail">
+                    <div class="prod_detail-close">
+                        <a href="#" onclick="document.querySelector('bmf-modal').removeAttribute('opened')">
+                        <span class="prod_detail-close-btn"></span>
+                        </a>
+                    </div>
+                    <div class="prod_detail-title">상품 정보 보기</div>
+                    <div class="prod_detail-content" tabindex="-1">
+                        <img src="images/product_detail.png">
+                    </div>
+                </div>
             </bmf-modal-inner>
         </bmf-modal>
         <bmf-content>
-            <bmf-content-inner>
+            <bmf-content-inner tabindex="-1">
                 <sitebar>
-                    <div class="sitebar-section"></div>
+                    <div class="sitebar-section">
+                        <div class="link_app" downarrow>
+                            <a href="#">배민프레시 앱 다운로드</a>
+                        </div>
+                        <ul class="link_lst">
+                            <li><a href="#">로그인</a></li>
+                            <li><a href="#">회원가입</a></li>
+                            <li downarrow><a href="#">마이페이지</a></li>
+                            <li downarrow><a href="#">고객센터</a></li>
+                            <li><a href="#">새벽배송 지역검색</a></li>
+                            <li><a href="#">이벤트 게시판</a></li>
+                            <li><a href="#">장바구니</a></li>
+                        </ul>
+                    </div>
                 </sitebar>
                 <header>
-                    <div class="header-section"></div>
+                    <div class="header-section">
+                        <div class="bmf-logo">
+                            <a href="#"><img src="https://cdn.bmf.kr/web/common/bmf_logo.png" alt="모바일 넘버원 반찬가게-배민프레시"></a>
+                        </div>
+                    <form name="form_search" class="searchbar" method="get">
+                        <input type="text" name="search_str" id="search_str" value="" placeholder="" data-url="">
+                        <button type="button"><span class="icon_search">검색</span></button>
+                    </form>
+                    <ul class="gnb_top">
+                        <li class="link_best">
+                            <a href="#">
+                                <img src="https://cdn.bmf.kr/banner/p_gnb1/170406/1491459737880_7ce6cb7c14c5.png" alt="베스트반찬">
+                            </a>
+                        </li>
+                        <li class="link_promotion">
+                            <a href="#">
+                                <img src="https://cdn.bmf.kr/banner/p_gnb2/170406/1491459753601_baa0cc19741d.png" alt="이벤트존">
+                            </a>
+                        </li>
+                        <li class="link_promotion">
+                            <a href="#">
+                                <img src="https://cdn.bmf.kr/banner/p_gnb3/170406/1491459767652_bd72103dd54b.png" alt="시그니처">
+                            </a>
+                        </li>
+                    </ul>
+
+
+
+                    </div>
                 </header>
                 
                 <nav>
-                    <div class="nav-section"></div>
+                    <div class="nav-section">
+                        <ul class="gnb">
+                            <li class="g1" ga-category="PC-gnbCategory,side-dish"> <a href="/side-dish/list.php"><span>밑반찬</span></a>
+                                <ul class="sub_lst">
+                                    <li ga-category="PC-gnbCategory,side-dish,3,300원 zone">
+                                        <a href="/side-dish/list.php?cno=30010900"> <span>3,300원 zone</span>
+                                        </a>
+                                    </li>
+                                    <li ga-category="PC-gnbCategory,side-dish,마른반찬">
+                                        <a href="/side-dish/list.php?cno=30010100"> <span>마른반찬</span>
+                                        </a>
+                                    </li>
+                                    <li ga-category="PC-gnbCategory,side-dish,무침·볶음">
+                                        <a href="/side-dish/list.php?cno=30010200"> <span>무침·볶음</span>
+                                        </a>
+                                    </li>
+                                    <li ga-category="PC-gnbCategory,side-dish,조림">
+                                        <a href="/side-dish/list.php?cno=30010400"> <span>조림</span>
+                                        </a>
+                                    </li>
+                                    <li ga-category="PC-gnbCategory,side-dish,김치">
+                                        <a href="/side-dish/list.php?cno=30010800"> <span>김치</span>
+                                        </a>
+                                    </li>
+                                    <li ga-category="PC-gnbCategory,side-dish,전·튀김">
+                                        <a href="/side-dish/list.php?cno=30010600"> <span>전·튀김</span>
+                                        </a>
+                                    </li>
+                                    <li ga-category="PC-gnbCategory,side-dish,젓갈·장아찌·장">
+                                        <a href="/side-dish/list.php?cno=30010500"> <span>젓갈·장아찌·장</span>
+                                        </a>
+                                    </li>
+                                    <li ga-category="PC-gnbCategory,side-dish,샐러드">
+                                        <a href="/side-dish/list.php?cno=30010700"> <span>샐러드</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="g2 " ga-category="PC-gnbCategory,soup"> <a href="/soup/list.php"><span>국·찌개</span></a>
+                                <ul class="sub_lst">
+                                    <li ga-category="PC-gnbCategory,soup,국">
+                                        <a href="/soup/list.php?cno=30020100"> <span>국</span>
+                                        </a>
+                                    </li>
+                                    <li ga-category="PC-gnbCategory,soup,찌개·전골">
+                                        <a href="/soup/list.php?cno=30020200"> <span>찌개·전골</span>
+                                        </a>
+                                    </li>
+                                    <li ga-category="PC-gnbCategory,soup,탕">
+                                        <a href="/soup/list.php?cno=30020300"> <span>탕</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="g3 " ga-category="PC-gnbCategory,main-courses"> <a href="/main-courses/list.php"><span>메인반찬</span></a>
+                                <ul class="sub_lst">
+                                    <li ga-category="PC-gnbCategory,main-courses,고기반찬">
+                                        <a href="/main-courses/list.php?cno=30030100"> <span>고기반찬</span>
+                                        </a>
+                                    </li>
+                                    <li ga-category="PC-gnbCategory,main-courses,해산물반찬">
+                                        <a href="/main-courses/list.php?cno=30030200"> <span>해산물반찬</span>
+                                        </a>
+                                    </li>
+                                    <li ga-category="PC-gnbCategory,main-courses,모던한식">
+                                        <a href="/main-courses/list.php?cno=30030300"> <span>모던한식</span>
+                                        </a>
+                                    </li>
+                                    <li ga-category="PC-gnbCategory,main-courses,덮밥">
+                                        <a href="/main-courses/list.php?cno=30030900"> <span>덮밥</span>
+                                        </a>
+                                    </li>
+                                    <li ga-category="PC-gnbCategory,main-courses,양식">
+                                        <a href="/main-courses/list.php?cno=30030500"> <span>양식</span>
+                                        </a>
+                                    </li>
+                                    <li ga-category="PC-gnbCategory,main-courses,일식·중식">
+                                        <a href="/main-courses/list.php?cno=30030400"> <span>일식·중식</span>
+                                        </a>
+                                    </li>
+                                    <li ga-category="PC-gnbCategory,main-courses,분식">
+                                        <a href="/main-courses/list.php?cno=30030600"> <span>분식</span>
+                                        </a>
+                                    </li>
+                                    <li ga-category="PC-gnbCategory,main-courses,죽·스프">
+                                        <a href="/main-courses/list.php?cno=30030800"> <span>죽·스프</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="g4 " ga-category="PC-gnbCategory,kids"> <a href="/kids/list.php"><span>아이반찬</span></a>
+                                <ul class="sub_lst">
+                                    <li ga-category="PC-gnbCategory,kids,반찬">
+                                        <a href="/kids/list.php?cno=30040200"> <span>반찬</span>
+                                        </a>
+                                    </li>
+                                    <li ga-category="PC-gnbCategory,kids,반찬세트">
+                                        <a href="/kids/list.php?cno=30040400"> <span>반찬세트</span>
+                                        </a>
+                                    </li>
+                                    <li ga-category="PC-gnbCategory,kids,이유식">
+                                        <a href="/kids/list.php?cno=30040100"> <span>이유식</span>
+                                        </a>
+                                    </li>
+                                    <li ga-category="PC-gnbCategory,kids,아이간식">
+                                        <a href="/kids/list.php?cno=30040300"> <span>아이간식</span>
+                                        </a>
+                                    </li>
+                                    <li ga-category="PC-gnbCategory,kids,얌이밀">
+                                        <a href="/kids/list.php?cno=30040700"> <span>얌이밀</span>
+                                        </a>
+                                    </li>
+                                    <li ga-category="PC-gnbCategory,kids,빅마마의밥친구">
+                                        <a href="/kids/list.php?cno=30040600"> <span>빅마마의밥친구</span>
+                                        </a>
+                                    </li>
+                                    <li ga-category="PC-gnbCategory,kids,맘마밀">
+                                        <a href="/kids/list.php?cno=30040500"> <span>맘마밀</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="g5 " ga-category="PC-gnbCategory,set-of-side"> <a href="/set-of-side/list.php"><span>반찬세트</span></a>
+                                <ul class="sub_lst">
+                                    <li ga-category="PC-gnbCategory,set-of-side,1~2인세트">
+                                        <a href="/set-of-side/list.php?cno=30050100"> <span>1~2인세트</span>
+                                        </a>
+                                    </li>
+                                    <li ga-category="PC-gnbCategory,set-of-side,3~4인세트">
+                                        <a href="/set-of-side/list.php?cno=30050200"> <span>3~4인세트</span>
+                                        </a>
+                                    </li>
+                                    <li ga-category="PC-gnbCategory,set-of-side,저염·유기농·친환경">
+                                        <a href="/set-of-side/list.php?cno=30050300"> <span>저염·유기농·친환경</span>
+                                        </a>
+                                    </li>
+                                    <li ga-category="PC-gnbCategory,set-of-side,프리미엄">
+                                        <a href="/set-of-side/list.php?cno=30050400"> <span>프리미엄</span>
+                                        </a>
+                                    </li>
+                                    <li ga-category="PC-gnbCategory,set-of-side,알뜰세트">
+                                        <a href="/set-of-side/list.php?cno=30050500"> <span>알뜰세트</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="g6 " ga-category="PC-gnbCategory,fresh"> <a href="/fresh/list.php"><span>신선·가공</span></a>
+                                <ul class="sub_lst">
+                                    <li ga-category="PC-gnbCategory,fresh,고기">
+                                        <a href="/fresh/list.php?cno=30060100"> <span>고기</span>
+                                        </a>
+                                    </li>
+                                    <li ga-category="PC-gnbCategory,fresh,과일·채소">
+                                        <a href="/fresh/list.php?cno=30060200"> <span>과일·채소</span>
+                                        </a>
+                                    </li>
+                                    <li ga-category="PC-gnbCategory,fresh,수산">
+                                        <a href="/fresh/list.php?cno=30060300"> <span>수산</span>
+                                        </a>
+                                    </li>
+                                    <li ga-category="PC-gnbCategory,fresh,가공">
+                                        <a href="/fresh/list.php?cno=30060400"> <span>가공</span>
+                                        </a>
+                                    </li>
+                                    <li ga-category="PC-gnbCategory,fresh,양곡">
+                                        <a href="/fresh/list.php?cno=30060700"> <span>양곡</span>
+                                        </a>
+                                    </li>
+                                    <li ga-category="PC-gnbCategory,fresh,냉동">
+                                        <a href="/fresh/list.php?cno=30060800"> <span>냉동</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="g7 " ga-category="PC-gnbCategory,refreshment"> <a href="/refreshment/list.php"><span>간식</span></a>
+                                <ul class="sub_lst">
+                                    <li ga-category="PC-gnbCategory,refreshment,식사빵">
+                                        <a href="/refreshment/list.php?cno=30070400"> <span>식사빵</span>
+                                        </a>
+                                    </li>
+                                    <li ga-category="PC-gnbCategory,refreshment,간식빵">
+                                        <a href="/refreshment/list.php?cno=30070500"> <span>간식빵</span>
+                                        </a>
+                                    </li>
+                                    <li ga-category="PC-gnbCategory,refreshment,케이크·디저트">
+                                        <a href="/refreshment/list.php?cno=30071200"> <span>케이크·디저트</span>
+                                        </a>
+                                    </li>
+                                    <li ga-category="PC-gnbCategory,refreshment,주스">
+                                        <a href="/refreshment/list.php?cno=30070700"> <span>주스</span>
+                                        </a>
+                                    </li>
+                                    <li ga-category="PC-gnbCategory,refreshment,스무디">
+                                        <a href="/refreshment/list.php?cno=30070600"> <span>스무디</span>
+                                        </a>
+                                    </li>
+                                    <li ga-category="PC-gnbCategory,refreshment,스프레드">
+                                        <a href="/refreshment/list.php?cno=30071300"> <span>스프레드</span>
+                                        </a>
+                                    </li>
+                                    <li ga-category="PC-gnbCategory,refreshment,유제품·커피">
+                                        <a href="/refreshment/list.php?cno=30070800"> <span>유제품·커피</span>
+                                        </a>
+                                    </li>
+                                    <li ga-category="PC-gnbCategory,refreshment,기타간식">
+                                        <a href="/refreshment/list.php?cno=30070900"> <span>기타간식</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="g8 " ga-category="PC-gnbCategory,brand"> <a href="/brand/list.php"><span>브랜드관</span></a>
+                                <ul class="sub_lst">
+                                    <li ga-category="PC-gnbCategory,brand,반찬가게">
+                                        <a href="/brand/list.php?cno=30080200"> <span>반찬가게</span>
+                                        </a>
+                                    </li>
+                                    <li ga-category="PC-gnbCategory,brand,전문반찬">
+                                        <a href="/brand/list.php?cno=30080600"> <span>전문반찬</span>
+                                        </a>
+                                    </li>
+                                    <li ga-category="PC-gnbCategory,brand,전국맛집">
+                                        <a href="/brand/list.php?cno=30080300"> <span>전국맛집</span>
+                                        </a>
+                                    </li>
+                                    <li ga-category="PC-gnbCategory,brand,셰프의요리">
+                                        <a href="/brand/list.php?cno=30080400"> <span>셰프의요리</span>
+                                        </a>
+                                    </li>
+                                    <li ga-category="PC-gnbCategory,brand,쿠킹박스">
+                                        <a href="/brand/list.php?cno=30080800"> <span>쿠킹박스</span>
+                                        </a>
+                                    </li>
+                                    <li ga-category="PC-gnbCategory,brand,현대백화점식품관">
+                                        <a href="/brand/list.php?cno=30080500"> <span>현대백화점식품관</span>
+                                        </a>
+                                    </li>
+                                    <li ga-category="PC-gnbCategory,brand,식객촌">
+                                        <a href="/brand/list.php?cno=30080100"> <span>식객촌</span>
+                                        </a>
+                                    </li>
+                                    <li ga-category="PC-gnbCategory,brand,윤식당">
+                                        <a href="/brand/list.php?cno=30080700"> <span>윤식당</span>
+                                        </a>
+                                    </li>
+                                    <li ga-category="PC-gnbCategory,brand,딩고">
+                                        <a href="/brand/list.php?cno=30081000"> <span>딩고</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
                 </nav>
 
                 <main>
@@ -54,6 +357,44 @@
 
                 <footer>
                     <div class="footer-section">
+                        <ul class="fnb">
+                            <li><a href="#">회사소개</a></li>
+                            <li><a href="#">제휴문의</a></li>
+                            <li><a href="#">단체구매 문의</a></li>
+                            <li><a href="#">이메일 무단 수집거부</a></li>
+                            <li><a href="#">이용약관</a></li>
+                            <li strong><a href="#">개인정보처리방침</a></li>
+                            <li><a href="#">공지사항</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-info">
+                        <div class="content">
+                            <ul class="fnb_info_lst">
+                                <li>(주)우아한신선들</li>
+                                <li>대표이사 : 박일한</li>
+                                <li>사업자등록번호 : 110-81-97233
+                                    [<a href="http://www.ftc.go.kr/info/bizinfo/communicationViewPopup.jsp?wrkr_no=1108197233 " target="_blank"><span>사업자 정보확인</span></a>]
+                                </li>
+                                <li class="last">통신판매업신고 : 제2015-서울송파-1733호</li>
+                                <li><address>주소 : 서울특별시 송파구 위례성대로 2, 5층(방이동, 장은빌딩)</address></li>
+                                <li>개인정보담당자 : 김용재</li>
+                                <li>이메일 : <a href="mailto:privacy@baeminfresh.com"><span>privacy@baeminfresh.com</span></a></li>
+                                <li class="last">고객센터 : 1899-2468</li>
+                                <li class="last">고객님의 안전거래를 위해 현금 등으로 결제 시 LG U+의 구매안전 서비스를 이용하실 수 있습니다.
+                                    [<a href="https://pgweb.dacom.net/pg/wmp/mertadmin/jsp/mertservice/s_escrowYn.jsp?mertid=ws_dummerce" target="_blank"><span>서비스 가입사실 확인</span></a>]
+                                </li>
+                            </ul>
+
+                            <p class="copyright">©Woowahan Fresh. All Rights Reserved.</p>
+                            <p class="bottom_copy">
+                                배민프레시는 통신판매중개자이며 통신판매의 당사자가 아닙니다. 따라서 배민프레시는 상품 거래정보 및 거래에 대해 책임지지 않습니다.<br>
+                                다만 회사가 판매하는 직매입 상품의 경우 판매업체의 지위를 갖게 됩니다.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="footer-snsbox">
+                        <a class="link_blog" href="http://blog.naver.com/dummerceblog" target="_blank">공식블로그</a>
+                        <a class="link_facebook" href="https://www.facebook.com/baeminfresh" target="_blank">페이스북페이지</a>
                     </div>
                 </footer>
             </bmf-content-inner>
