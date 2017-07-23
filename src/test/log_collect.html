@@ -1,0 +1,23 @@
+<html>
+<head>
+<script>
+    var last_clicked;
+window.addEventListener('click', function (e) {
+    last_clicked = e.target;
+    return true;
+});
+window.addEventListener("beforeunload", function (e) {
+ // (e || window.event).returnValue = null;
+  for (let i = 0; i < 1000; i++)
+      console.log(`cnt: ${i}`);
+    console.log(e);
+    console.log(last_clicked.href);
+  //return null;
+});
+</script>
+</head>
+<body onbeforeunload="console.log('test')">
+
+<a href="http://www.naver.com">네이버</a> | <a href="http://www.baemin.com">배달의 민족</a>
+</body>
+</html>

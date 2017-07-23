@@ -12,7 +12,7 @@ body {
     background: #fff;
     color: #333;
 }
-ul {
+ul, dl, dt, dd {
     margin: 0;
     padding: 0;
     outline: 0;
@@ -49,17 +49,21 @@ bmf-modal:before {
 }
 bmf-modal {
     position: absolute;
-    display: none;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     text-align: center;
     z-index: 100;
+    pointer-events: none;
+    opacity: 0;
+    transition: .5s;
 }
 bmf-modal[opened] {
     display: block;
     position: fixed;
+    pointer-events: all;
+    opacity: 100;
 }
 bmf-modal-inner {
     position: absolute;
@@ -78,21 +82,110 @@ bmf-modal-inner > * {
     display: inline-block;
     vertical-align: middle;
 }
+.detail_container {
+    margin: 30px;
+}
+.detail_container .side_left {
+    float: left;
+    margin: 35px 0 0 45px;
+}
+.detail_container .side_right {
+    float: left;
+    text-align: left;
+    margin: 25px 0 0 45px;
+    height: 500px;
+}
+.detail_container .prod_title {
+    font-size: 30px;
+    font-family: NanumEB, sans-serif;
+    font-weight: bold;
+    letter-spacing: -1px;
+    padding: 5px 0 0 0;
+}
+.detail_container .prod_description {
+    color: #333;
+    font-size: 14px;
+    line-height: 1.6;
+    padding: 10px 0 0 0;
+}
+.detail_container .prod_info {
+    position: relative;
+    margin: 10px 0 0 50px;
+    line-height: 1.85;
+}
+
+.prod_info dt {
+    position: relative;
+    float: left;
+    clear: both;
+    left: -50px;
+    margin-right: -50px;
+    color: #999;
+}
+.prod_info dd {
+    position: relative;
+    float: right;
+    width: 90%;
+}
+.prod_price {
+    text-align: right;
+}
+.prod_price .n_price {
+    color: #888;
+    font-size: 20px;
+    text-decoration: line-through;
+    padding-right: 10px;
+}
+.prod_price .s_price {
+    font-size: 33px;
+    font-family: Verdana, sans-serif;
+    font-weight: bold;
+}
+.detail_container .top_images {
+    margin-top: 0;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    width: 350px;
+    height: 350px;
+}
+.thumb_images li {
+    width: 57px;
+    height: 57px;
+    border: 1px solid #ddd;
+    display: inline-block;
+    margin: 5px;
+    background-color: #f3f3f3 !important;
+}
+.thumb_images li:last-child {
+    margin-right: 0;
+}
+.thumb_images li:first-child {
+    margin-left: 0;
+}
+
 .prod_detail {
-    width: 1250px;
+    max-width: 1250px;
+    width: calc(90% - 20px);
     background: white;
     border: 6px solid #2ac1bc;
     border-top: 0;
 }
 .prod_detail-close {
+    display: block;
+    width: calc(90% - 20px);
     position: absolute;
-    margin-left: 1230px;
+    max-width: 1250px;
+    text-align: right;
+    margin-left: 20px;
+}
+.prod_detail-close-inner {
+    position: relative;
     margin-top: -15px;
+    display: inline-block;
     width: 30px;
     height: 30px;
     background: white;
     border-radius: 100px;
-    position: absolute;
     border: 3px solid #2ac1bc;
     box-shadow: 0 0 2px 2px rgba(255, 255, 255, 0.5);
 }
@@ -144,11 +237,13 @@ bmf-modal-inner > * {
 
 bmf-modal[opened]~bmf-content {
     filter: blur(6px);
+    pointer-events: none;
 }
 bmf-content {
     position: absolute;
     width: 100%;
     height: 100%;
+    transition: .5s;
 }
 bmf-content-inner {
     display: block;
@@ -434,15 +529,232 @@ main {
     background-position: center;
 }
 
+.main_slides_lst > li {
+    float: none;
+    list-style: none;
+    position: absolute;
+    width: 1920px;
+    z-index: 0;
+}
+
 .main-best-prds {
     position: relative;
+    background: #eee;
 }
 
 .main-best-prds-inner {
     width: 980px;
     height: 680px;
     margin: 0 auto;
-    background: url('http://placehold.it/980x680/E7CFB3/000000?text=Best Banchan%20Area%20(980x680)');
+}
+
+
+/* one item */
+.tab_area li:first-child:nth-last-child(1) {
+  width: 100%;
+}
+
+/* two items */
+.tab_area li:first-child:nth-last-child(2),
+.tab_area li:first-child:nth-last-child(2) ~ li {
+  width: 50%;
+}
+
+/* three items */
+.tab_area li:first-child:nth-last-child(3),
+.tab_area li:first-child:nth-last-child(3) ~ li {
+  width: 33.3333%;
+}
+
+/* four items */
+.tab_area li:first-child:nth-last-child(4),
+.tab_area li:first-child:nth-last-child(4) ~ li {
+  width: 25%;
+}
+
+/* five items */
+.tab_area li:first-child:nth-last-child(5),
+.tab_area li:first-child:nth-last-child(5) ~ li {
+  width: 20%;
+}
+
+/* six items */
+.tab_area li:first-child:nth-last-child(6),
+.tab_area li:first-child:nth-last-child(6) ~ li {
+  width: 16.6667%;
+}
+
+/* seven items */
+.tab_area li:first-child:nth-last-child(7),
+.tab_area li:first-child:nth-last-child(7) ~ li {
+  width: 14.2857%;
+}
+
+/* eight items */
+.tab_area li:first-child:nth-last-child(8),
+.tab_area li:first-child:nth-last-child(8) ~ li {
+  width: 12.5%;
+}
+.tab_area {
+    width: 100%;
+}
+.tab_area ul {
+    width: 100%;
+    position: relative;
+    float: left;
+    margin-top: 15px;
+    margin-bottom: 26px;
+}
+
+.tab_area li {
+    float: left;
+    display: block;
+    position: relative;
+}
+
+.tab_area li a {
+    display: block;
+    height: 33px;
+    padding-top: 17px;
+    text-align: center;
+    background: #fff;
+    font-family: "NanumBold";
+    font-size: 15px;
+    margin-right: 1px;
+    line-height: 1.2;
+    color: #777;
+}
+
+.tab_area li a.now, .tab_area li a:hover {
+    color: #fff;
+    background: #1fcbc7;
+    margin-right: 0px;
+}
+.best-prds-container ul {
+    display: none;
+}
+.best-prds-container ul.active {
+    display: block
+}
+.best-prds-container ul > li {
+    position: relative;
+    overflow: hidden;
+    float: left;
+    width: 310px;
+    height: 429px;
+    margin: 0 24px 10px 0;
+    background: #fff;
+    border-bottom: 1px solid #d7d7d7;
+}
+.best-prds-container li:last-child {
+    margin: 0;
+}
+.best-prds-container .thumb-img {
+    height: 310px;
+}
+.best-prds-container .delivery_type {
+    display: none;
+}
+.best-prds-container a:hover .delivery_type {
+    display: block;
+    background: rgba(0,0,0,0.5);
+    color: white;
+    font-size: 1.2rem;
+    position: absolute;
+    width: 100%;
+    height: 170px;
+    padding-top: 45%;
+}
+
+.prds-content {
+    text-align: left;
+    display: block;
+    height: 100%;
+}
+.prds-content dl {
+    padding: 18px 20px 15px;
+    height: 90px;
+    text-align: left;
+}
+.prds-content dd.prd_description {
+    margin-bottom: 21px;
+}
+
+.prds-content dt.prd_tlt {
+    font-size: 17px;
+    margin-bottom: 6px;
+}
+
+dl dt.prd_tlt {
+    margin-bottom: 5px;
+    font-size: 16px;
+    font-family: "NanumEB", "Malgun Gothic", sans-serif;
+    letter-spacing: -0.07em;
+    color: #000;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+dl dd.prd_description {
+    font-size: 13px;
+    color: #666;
+    font-family: "Nanum";
+    width: 100%;
+    margin-bottom: 11px;
+    overflow: hidden;
+    letter-spacing: -0.07em;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.prds-content dd.prd_price {
+    float: right;
+}
+dl dd.prd_price {
+    font-family: Montserrat, sans-serif;
+    letter-spacing: 0;
+}
+dl dd.prd_price span.n_price {
+    text-decoration: line-through;
+    font-size: 14px;
+    color: #888;
+    font-weight: normal;
+    vertical-align: middle;
+}
+dl dd.prd_price span.s_price {
+    letter-spacing: -0.04em;
+    margin-left: 9px;
+    font-size: 26px;
+    color: #2ac1bc;
+    font-weight: bold;
+    vertical-align: middle;
+    line-height: 1;
+}
+
+.n_price {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    color: #666;
+    text-decoration: line-through;
+}
+.s_price {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 20px;
+    color: #000;
+}
+.prds-sub_title {
+    font-size: 1rem;
+    color: #888;
+    padding: 26px 0 10px 0;
+}
+.prds-title {
+    font-family: "NanumEB", "Malgun Gothic", sans-serif;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: #000;
 }
 
 .main-prds-box {

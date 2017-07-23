@@ -5,16 +5,143 @@
         <title>배민프레시 - 모바일 넘버원 반찬가게</title>
         <link rel="stylesheet" href="css/font.css">
         <link rel="stylesheet" href="css/main.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
+        <script src="script/slider.js"></script>
         <script src="script/main.js"></script>
+        <style>
+
+.main_slides_wrap {
+        		text-align: center;
+        		max-width: 1920px;
+        		margin: 0 auto;
+        	}
+        	.slides_container {
+        		position: relative;
+        		height: 420px;
+        	}
+
+        	.main_slides_wrap .bx-wrapper {
+        		text-align: left;
+        	}
+
+        	.bx-wrapper {
+        		margin: 0 auto;
+        		background: #fff;
+        	}
+
+        	.slides_container ul.slides_pagination {
+        		z-index: 55;
+        		position: relative;
+        		bottom: 30px;
+        		width: 100%;
+        		height: 0;
+        		overflow: visible;
+        	}
+
+        	ul.main_slides_lst {
+        		overflow: hidden;
+        		height: 420px;
+        	}
+
+        	ul.main_slides_lst li a {
+        		display: block;
+        		width: 980px;
+        		height: 420px;
+        		margin: 0 auto;
+        		overflow: hidden;
+        		text-indent: -3000px;
+        	}
+
+        	.slides_container ul.slides_pagination {
+        		z-index: 55;
+        		position: relative;
+        		bottom: 30px;
+        		width: 100%;
+        		height: 0;
+        		overflow: visible;
+        	}
+
+        	.slides_container ul.slides_pagination li {
+        		display: inline-block;
+        		vertical-align: top;
+        		padding: 0 3px;
+        	}
+
+        	.slides_container div.slides_navi {
+        		width: 100%;
+        	}
+
+        	.slides_container div.slides_navi a.slides_prev {
+        		right: 50%;
+        		margin-right: 530px;
+        		background-position: left center;
+        	}
+
+        	.slides_container div.slides_navi a {
+        		z-index: 55;
+        		display: block;
+        		width: 60px;
+        		height: 92px;
+        		text-indent: -3000px;
+        		overflow: hidden;
+        		position: absolute;
+        		top: 50%;
+        		margin-top: -46px;
+        		background: url(https://cdn.bmf.kr/web/common/main_slides_navi.png) no-repeat center center;
+        	}
+
+        	.slides_container div.slides_navi a.slides_next {
+        		left: 50%;
+        		margin-left: 530px;
+        		background-position: right center;
+        	}
+
+        	.slides_container ul.slides_pagination li a {
+        		display: block;
+        		width: 10px;
+        		height: 0;
+        		padding: 10px 0 0 0;
+        		overflow: hidden;
+        		background: #FFF;
+        		-webkit-border-radius: 50%;
+        		-moz-border-radius: 50%;
+        		border-radius: 50%;
+        		-webkit-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+        		-moz-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+        		box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+        		opacity: 0.6;
+        		filter: alpha(opacity=60);
+        	}
+
+.main_slides_lst {
+    padding: 0;
+}
+
+.slides_pagination {
+    padding: 0;
+}
+
+ul.main_slides_lst li {
+    width: 100% !important;
+    background-position: center;
+}
+
+.slides_container ul.slides_pagination li a:hover,
+.slides_container ul.slides_pagination li a.now {
+    opacity: 1.0;
+}
+</style>
     </head>
     <body>
-        <bmf-modal opened>
+        <bmf-modal>
             <bmf-modal-inner><!--
                 --><div class="prod_detail">
                     <div class="prod_detail-close">
-                        <a href="#" onclick="document.querySelector('bmf-modal').removeAttribute('opened')">
-                        <span class="prod_detail-close-btn"></span>
-                        </a>
+                        <div class="prod_detail-close-inner">
+                            <a href="#" onclick="document.querySelector('bmf-modal').removeAttribute('opened');setTimeout(() => document.querySelector('bmf-content-inner').focus(), 500)">
+                            <span class="prod_detail-close-btn"></span>
+                            </a>
+                        </div>
                     </div>
                     <div class="prod_detail-title">상품 정보 보기</div>
                     <div class="prod_detail-content" tabindex="-1">
@@ -62,7 +189,7 @@
                             </a>
                         </li>
                         <li class="link_promotion">
-                            <a href="#">
+                            <a href="#" onclick="document.querySelector('bmf-modal').setAttribute('opened', '');setTimeout(() => document.querySelector('.prod_detail-content').focus(), 500)">
                                 <img src="https://cdn.bmf.kr/banner/p_gnb3/170406/1491459767652_bd72103dd54b.png" alt="시그니처">
                             </a>
                         </li>
@@ -329,9 +456,119 @@
                 </nav>
 
                 <main>
-                    <div class="main-slides-banner"></div>
+                    <div class="main-slides-banner">
+
+                        <div class="wrap main_slides_wrap">
+                            <div id="main-banners" class="slides_container">
+                                <div class="bx-wrapper" style="max-width: 100%; margin: 0px auto;">
+                                    <div class="bx-viewport" style="width: 100%; overflow: hidden; position: relative; height: 420px;">
+                                        <ul class="main_slides_lst" data-ref_id="main-banners" style="width: auto; position: relative;">
+                                            <li style="background-image: url(&quot;https://cdn.bmf.kr/banner/main_banner/170710/1499664994146_bb0efd9c4cc6.jpg&quot;); display: none;" aria-hidden="true">
+                                                <a href="https://www.baeminfresh.com/promotion/list.php?cno=5070000&amp;ga_banner=1">
+                    복날 기획전                            </a>
+                                            </li>
+                                            <li style="background-image: url(&quot;https://cdn.bmf.kr/banner/temp_main_banner/170712/1499835605040_f75b0b095cd4.jpg&quot;); display: none;" aria-hidden="true">
+                                                <a href="https://www.baeminfresh.com/promotion/honsul-salon.php&amp;ga_banner=1">
+                    딩고                            </a>
+                                            </li>
+                                            <li style="background-image: url(&quot;https://cdn.bmf.kr/banner/temp_main_banner/170713/1499921375267_482833ebbe80.jpg&quot;); display: none;" aria-hidden="true">
+                                                <a href="https://www.baeminfresh.com/brand/list.php?cno=30080624&amp;ga_banner=1">
+                    중독 주의! 매운맛의 정석                            </a>
+                                            </li>
+                                            <li style="background-image: url(&quot;https://cdn.bmf.kr/banner/main_banner/170712/1499849909533_711d52b30484.jpg&quot;); display: none;" aria-hidden="true">
+                                                <a href="https://www.baeminfresh.com/promotion/list.php?cno=5140000&amp;ga_banner=1">
+                    다이어트 기획전                            </a>
+                                            </li>
+                                            <li style="background-image: url(&quot;https://cdn.bmf.kr/banner/main_banner/170706/1499316420194_a34c62ecf722.jpg&quot;); display: none;" aria-hidden="true">
+                                                <a href="https://www.baeminfresh.com/promotion/detail.php?hash=HB9D1&amp;cno=5070000&amp;ga_banner=1">
+                    [보양식1-1][집밥의완성] 닭 보양식 2종                            </a>
+                                            </li>
+                                            <li style="background-image: url(&quot;https://cdn.bmf.kr/banner/main_banner/170711/1499762216226_982b82666d8c.jpg&quot;); display: none;" aria-hidden="true">
+                                                <a href="https://www.baeminfresh.com/promotion/list.php?cno=5070000&amp;ga_banner=1&amp;ga_banner=1" onclick="ga('send', 'event', 'Product', 'Click Banner', '☆ [보양식2-1]소식')">
+                    [보양식2-1]소식                            </a>
+                                            </li>
+                                            <li style="background-image: url(&quot;https://cdn.bmf.kr/banner/main_banner/170707/1499410281964_51fb39a533ad.jpg&quot;); display: none;" aria-hidden="true">
+                                                <a href="https://www.baeminfresh.com/side-dish/list.php?cno=30010900&amp;ga_banner=1" onclick="ga('send', 'event', 'Product', 'Click Banner', '★ 3,300원 카테고리 오픈')">
+                    3,300원 카테고리 오픈                            </a>
+                                            </li>
+                                            <li style="background-image: url(&quot;https://cdn.bmf.kr/banner/main_banner/170706/1499309555843_973ea4f49765.jpg&quot;); display: none;" aria-hidden="true">
+                                                <a href="https://www.baeminfresh.com/brand/list.php?cno=30080330&amp;ga_banner=1" onclick="ga('send', 'event', 'Product', 'Click Banner', '☆ [개금밀면] 앵콜 이벤트')">
+                    [개금밀면] 앵콜 이벤트                            </a>
+                                            </li>
+                                            <li style="background-image: url(&quot;https://cdn.bmf.kr/banner/main_banner/170704/1499145124189_ee205d29b823.jpg&quot;); display: none;" aria-hidden="true">
+                                                <a href="https://www.baeminfresh.com/promotion/camping_2nd.php&amp;ga_banner=1" onclick="ga('send', 'event', 'Product', 'Click Banner', '★ 캠핑기획전 2 ')">
+                    캠핑기획전 2                            </a>
+                                            </li>
+                                            <li style="background-image: url(&quot;https://cdn.bmf.kr/banner/main_banner/170706/1499315550920_bcb3087568df.jpg&quot;); display: none;" aria-hidden="true">
+                                                <a href="https://www.baeminfresh.com/brand/list.php?cno=30080406&amp;ga_banner=1" onclick="ga('send', 'event', 'Product', 'Click Banner', '★ 다담x옹가 론칭')">
+                    다담x옹가 론칭                            </a>
+                                            </li>
+                                            <li style="background-image: url(&quot;https://cdn.bmf.kr/banner/main_banner/170706/1499319971682_30379a1464d9.jpg&quot;); z-index: 50;" aria-hidden="false">
+                                                <a href="https://www.baeminfresh.com/board/?db=bfevent&amp;no=161&amp;mari_mode=view%40view&amp;cate=&amp;page=1&amp;listURL=https%3A%2F%2Fwww.baeminfresh.com%2Fboard%2F%3Fdb%3Dbfevent&amp;search=&amp;search_str=&amp;temp=&amp;pno=&amp;ono=&amp;ifr=&amp;ga_banner=1" onclick="ga('send', 'event', 'Product', 'Click Banner', '★ 옹가솜씨 쿠킹클래스 초대')">
+                    옹가솜씨 쿠킹클래스 초대                            </a>
+                                            </li>
+                                            <li style="background-image: url(&quot;https://cdn.bmf.kr/banner/main_banner/170405/1491367917020_ca4958af233a.jpg&quot;); display: none;" aria-hidden="true">
+                                                <a href="https://www.baeminfresh.com/promotion/list.php?cno=5190000&amp;ga_banner=1&amp;ga_banner=1" onclick="ga('send', 'event', 'Product', 'Click Banner', '☆ 새로운 맘 ')">
+                    새로운 맘                             </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="slides_navi">
+                                    <a href="#" class="slides_prev" title="이전">이전</a>
+                                    <a href="#" class="slides_next" title="다음">다음</a>
+                                </div>
+
+                                <ul class="slides_pagination">
+                                    <li><a href="#">0</a></li>
+                                    <li><a href="#">1</a></li>
+                                    <li><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                    <li><a href="#">4</a></li>
+                                    <li><a href="#">5</a></li>
+                                    <li><a href="#">6</a></li>
+                                    <li><a href="#">7</a></li>
+                                    <li><a href="#">8</a></li>
+                                    <li><a href="#">9</a></li>
+                                    <li><a href="#" class="now">10</a></li>
+                                    <li><a href="#">11</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+
+                        
+
+
+                    </div>
                     <div class="main-best-prds">
-                        <div class="main-best-prds-inner"></div>
+                        <div class="main-best-prds-inner">
+                            <div class="best-prds-container">
+                                <ul>
+                                    <li>
+                                        <div class="thumb-img">
+                                            <div>
+                                                <img src="https://cdn.bmf.kr/_data/product/HE820/f1fb376ab7daf3b579dc61264a46e015.jpg" alt="[애슐리투고]&nbsp;낙지 유자소스비빔면 (반조리) 500g" style="max-width: 100%;">
+                                            </div>
+                                        </div>
+                                        <div class="prds-content">
+                                            <dl>
+                                                <dt class="prd_tlt">[애슐리투고] 대게살볶음밥 (재료) 190g</dt>
+                                                <dd class="prd_description">부드럽고 고소한 중국식 대게살 볶음밥</dd>
+                                                <dd class="prd_price">
+                                                    <span class="n_price">6,500</span>
+                                                    <span class="s_price">5,850<span class="won">원</span></span>
+                                                </dd>
+                                            </dl>
+                                            <span>[애슐리투고] 낙지 유자소스비빔면</span>
+                                        </div>
+                                    </li>
+                                    <li></li>
+                                    <li></li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                     <div class="main-prds-box">
                         <div class="main-prds-box-inner"></div>
