@@ -15,9 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
 var last_clicked;
 window.addEventListener('click', function (e) {
     last_clicked = e.target;
-    //console.log(last_clicked);
+    console.log(last_clicked);
     return true;
-});
+}, true);
 
 function loadBestPrd() {
     var req = new XMLHttpRequest();

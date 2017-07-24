@@ -1,7 +1,5 @@
 
 function modalOpen(title, hash_detail) {
-
-
     var req = new XMLHttpRequest();
     req.open('GET', 'http://52.78.212.27:8080/woowa/detail/' + hash_detail, false);
     req.send(null);
