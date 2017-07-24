@@ -4,7 +4,7 @@ function modalOpen(title, hash_detail) {
     req.open('GET', 'http://52.78.212.27:8080/woowa/detail/' + hash_detail, false);
     req.send(null);
     var obj = JSON.parse(req.responseText);
-    history.pushState(null, title, `/#/${hash_detail}`);
+    history.pushState(null, title, `./#/detail/${hash_detail}`);
     
     var prod_detail = document.querySelector('.prod_detail-content');
     var n_price, s_price;
