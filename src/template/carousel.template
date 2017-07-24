@@ -1,0 +1,54 @@
+<template>
+    <div class="main-prds-box-inner">
+    <div class="pd_content1">
+        <div class="prds-sub_title">{{sub_title}}</div>
+        <div class="prds-title">{{title}}</div>
+        <div class="container">
+            <div class="viewport">
+                {{#data}}
+                <div class="box">
+                    <ul class="pd_box_lst">
+                        {{#.}}
+                        <li class="pd_box">
+                            <a href="javascript:void(0)" onclick="modalOpen('{{title}}','{{detail_hash}}')">
+                                <div class="thumb_img">
+                                    <p><img src="{{image}}" alt="{{alt}}"></p>
+                                    <div class="delivery_type_lst">
+                                        <div>
+                                            <ul>
+                                                <li class="d1"><span>새벽배송</span></li>
+                                                <li class="d2"><span>전국택배</span></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="circle_mask">&nbsp;</div>
+                                </div>
+                                <dl>
+                                    <dt class="prd_tlt">{{title}}</dt>
+                                    <dd class="prd_description">{{description}}</dd>
+                                    <dd class="prd_price">
+                                        <span class="n_price">{{n_price}}</span>
+                                        <span class="s_price">{{s_price}}</span>
+                                    </dd>
+                                </dl>
+                                <div class="badge_area">
+                                </div>
+                            </a>
+                        </li>
+                        {{/.}}
+                    </ul>
+                </div>
+                {{/data}}
+                </div>
+                <div class="pd_slides_navi">
+                    <a href="#" class="slides_prev" title="이전">이전</a>
+                    <a href="#" class="slides_next" title="다음">다음</a>
+                </div><!--
+                <div class="button">
+                    <button id="left">left</button>
+                    <button id="right">right</button>
+                </div>-->
+            </div>
+        </div>
+    </div>
+</template>

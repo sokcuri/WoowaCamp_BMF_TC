@@ -1,6 +1,5 @@
-
-
 function createTemplate(section) {
+    let carousel_template = document.querySelector('link[rel="import"][href*="/carousel.template"]').import.querySelector('template').innerHTML;
     var req = new XMLHttpRequest();
     req.open('GET', 'http://52.78.212.27:8080/woowa/' + section.name, false);
     req.send(null);
@@ -17,64 +16,10 @@ function createTemplate(section) {
         procArr.push(obj.slice(i * divideConst, (i * divideConst) + 4))
     }
     console.log(procArr);
-
-    const carousel_template = `
-        <div class="main-prds-box-inner">
-        <div class="pd_content1">
-                
-            <div class="prds-sub_title">${section.sub_title}</div>
-            <div class="prds-title">${section.title}</div>
-            <div class="container">
-                <div class="viewport">
-                    {{#.}}
-                    <div class="box">
-                        <ul class="pd_box_lst">
-                            {{#.}}
-                            <li class="pd_box">
-                                <a href="javascript:void(0)" onclick="modalOpen('{{title}}','{{detail_hash}}')">
-                                    <div class="thumb_img">
-                                        <p><img src="{{image}}" alt="{{alt}}"></p>
-                                        <div class="delivery_type_lst">
-                                            <div>
-                                                <ul>
-                                                    <li class="d1"><span>새벽배송</span></li>
-                                                    <li class="d2"><span>전국택배</span></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="circle_mask">&nbsp;</div>
-                                    </div>
-                                    <dl>
-                                        <dt class="prd_tlt">{{title}}</dt>
-                                        <dd class="prd_description">{{description}}</dd>
-                                        <dd class="prd_price">
-                                            <span class="n_price">{{n_price}}</span>
-                                            <span class="s_price">{{s_price}}</span>
-                                        </dd>
-                                    </dl>
-                                    <div class="badge_area">
-                                    </div>
-                                </a>
-                            </li>
-                            {{/.}}
-                        </ul>
-                    </div>
-                    {{/.}}
-                </div>
-                <div class="pd_slides_navi">
-                    <a href="#" class="slides_prev" title="이전">이전</a>
-                    <a href="#" class="slides_next" title="다음">다음</a>
-                </div><!--
-                <div class="button">
-                    <button id="left">left</button>
-                    <button id="right">right</button>
-                </div>-->
-            </div>
-        </div>
-    </div>`;
+    
     var el = document.createElement('div');
     el.className = 'main-prds-box';
-    el.innerHTML = Mustache.render(carousel_template, procArr);
+    el.innerHTML = Mustache.render(carousel_template, {title: section.title, sub_title: section.sub_title, data: procArr});
     return el;
 }
 

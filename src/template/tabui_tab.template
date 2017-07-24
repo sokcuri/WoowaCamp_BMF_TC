@@ -1,0 +1,14 @@
+<template>
+    {{resetIndex}}
+    <div class="prds-sub_title">베스트셀러</div>
+    <div class="prds-title">안먹어보면 너무나 아쉬운 베스트 반찬</div>
+    <div class="tab_area">
+        <ul>
+            {{#data}}{{setUpIndex}}
+            <li>
+                <a href="#" onclick="" data-index={{getIndex}}>{{name}}</a>
+            </li>
+            {{/data}}
+        </ul>
+    </div>
+</template>
