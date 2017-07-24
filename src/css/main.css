@@ -666,6 +666,45 @@ main {
     padding-top: 45%;
 }
 
+.badge_area {
+    position: absolute;
+    bottom: 123px;
+    margin: 0 0 10px 10px;
+    font-size: 0;
+}
+
+.badge_area > span {
+    display: inline-block;
+    zoom: 1;
+    margin: 0 3px 0 3px;
+    padding: 7px 0 4px;
+    min-width: 52px;
+    height: 11px;
+    line-height: 11px;
+    text-align: center;
+    font-size: 11px;
+    color: #fff;
+    font-family: Dotum, "Nanum", sans-serif;
+}
+
+.badge_area > span[data-badge='베스트'] {
+    background: #fa6565;
+}
+.badge_area > span[data-badge='론칭특가'] {
+    background: #a974bf;
+}
+.badge_area > span[data-badge='이벤트특가'] {
+    background: #a974bf; width: 62px;
+}
+div.badge.free{background: #33bdb9}
+div.badge.gift{background: #f8b500; width: 62px;}
+div.badge.coupon{background: #fa6565;}
+div.badge.stock{background: #585c6a; width: 62px;}
+div.badge.friday{background: #585c6a; width: 62px;}
+div.badge.finish{background: #333333;}
+div.badge.soldout{background: #333333;}
+div.badge.ready{background: #585c6a; width: 62px;}
+
 .prds-content {
     text-align: left;
     display: block;
@@ -763,9 +802,9 @@ dl dd.prd_price span.s_price {
 
 .main-prds-box-inner {
     width: 980px;
-    height: 810px;
-    margin: 0 auto;
-    background: url('http://placehold.it/980x680/DEDAD7/000000?text=Product section%20Area%20(980x810)');
+    height: 510px;
+    margin: 50px auto;
+    /*background: url('http://placehold.it/980x680/DEDAD7/000000?text=Product section%20Area%20(980x810)');*/
 }
 
 footer {

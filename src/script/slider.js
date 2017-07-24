@@ -57,7 +57,7 @@ function slidesPaginationHandler(changeSlide) {
     transitionSlide(currentSlide, changeSlide);
 }
 
-function registerEvents() {
+function registerSlideEvents() {
     document.querySelector('.slides_prev').addEventListener('click', slidesPrevBtnHandler);
     document.querySelector('.slides_next').addEventListener('click', slidesNextBtnHandler);
 
@@ -145,9 +145,4 @@ function slideAnimation() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    registerEvents();
-    slideAnimation();
-    let currentSlide = getCurrentSlide();
-    let currentSlideNumber = extractSlideNumber(currentSlide);
-    getPagination(currentSlideNumber).classList.add('now');
-});
+}, true);

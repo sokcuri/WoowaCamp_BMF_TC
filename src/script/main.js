@@ -4,7 +4,13 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log(last_clicked);
     });
     loadBestPrd();
-});
+    
+    registerSlideEvents();
+    slideAnimation();
+    let currentSlide = getCurrentSlide();
+    let currentSlideNumber = extractSlideNumber(currentSlide);
+    getPagination(currentSlideNumber).classList.add('now');
+}, true);
 
 var last_clicked;
 window.addEventListener('click', function (e) {
@@ -60,6 +66,11 @@ function loadBestPrd() {
                                 <span>{{.}}</span>
                             {{/delivery_type}}
                             </div>
+                            <div class="badge_area">
+                            {{#badge}}
+                            <span data-badge='{{.}}'>{{.}}</span>
+                            {{/badge}}
+                            </div>
                             <div>
                                 <img src="{{image}}" alt="{{alt}}" style="max-width: 100%;">
                             </div>
@@ -90,63 +101,4 @@ function loadBestPrd() {
             document.querySelector('.best-prds-container .active').classList.remove('active');
         document.querySelector(`.best-prds-container ul:nth-child(${e.target.dataset.index})`).classList.add('active');
     });
-}
-
-function modalOpen(title, hash_detail) {
-    var req = new XMLHttpRequest();
-    req.open('GET', 'http://52.78.212.27:8080/woowa/detail/' + hash_detail, false);
-    req.send(null);
-    var obj = JSON.parse(req.responseText);
-    console.info(obj);
-
-    var prod_detail = document.querySelector('.prod_detail-content');
-    var n_price, s_price;
-    if (obj.data.prices[1] === undefined) {
-        n_price = '';
-        s_price = obj.data.prices[0];
-    }
-    else {
-        n_price = obj.data.prices[0];
-        s_price = obj.data.prices[1];
-    }
-    
-    var prod_detail_template = `
-    <div class="detail_container">
-        <div class="side_left">
-            <div class="top_images" style="background:url('{{data.top_image}}');background-size:contain"></div>
-            <ul class="thumb_images">
-            <li style="background:url('${obj.data.thumb_images[0]}');background-size:contain;"></li>
-            <li style="background:url('${obj.data.thumb_images[1]}');background-size:contain;"></li>
-            <li style="background:url('${obj.data.thumb_images[2]}');background-size:contain;"></li>
-            <li style="background:url('${obj.data.thumb_images[3]}');background-size:contain;"></li>
-            <li style="background:url('${obj.data.thumb_images[4]}');background-size:contain;"></li>
-            </ul>
-        </div>
-        <div class="side_right">
-            <div class="prod_title">${title}</div>
-            <div class="prod_description">{{data.product_description}}</div>
-            <dl class="prod_info">
-            <dt>적립금</dt>
-            <dd>{{data.point}}</dd>
-            <dt>배송정보</dt>
-            <dd>{{data.delivery_info}}</dd>
-            <dt>배송비</dt>
-            <dd>{{data.delivery_fee}}</dd>
-            <dd class="prod_price">
-            <span class="n_price">${n_price}</span>
-            <span class="s_price">${s_price}</span>
-            </dd>
-            </dl>
-            </div>
-            <div class="detail_section">
-                <ul>
-                {{#data.detail_section}}
-                    <img src="{{.}}">
-                {{/data.detail_section}}
-                </ul>
-            </div>
-        </div>
-    </div>`;
-    prod_detail.innerHTML = Mustache.render(prod_detail_template, obj);
-    document.querySelector('bmf-modal').setAttribute('opened', '');
 }
